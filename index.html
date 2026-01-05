@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ sơ: Hồ Ngọc Chung - Vietcombank</title>
+    <!-- Import Font chữ -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Import Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --vcb-green: #004d26;   /* Màu xanh đậm Vietcombank */
+            --vcb-light: #74c043;   /* Màu xanh lá mạ */
+            --zalo-blue: #0068FF;   /* Màu xanh Zalo */
+            --bg-gray: #f0f2f5;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-gray);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--text-dark);
+        }
+
+        .profile-card {
+            display: flex;
+            background: var(--white);
+            width: 100%;
+            max-width: 950px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        /* ----- SIDEBAR (TRÁI) ----- */
+        .sidebar {
+            background: linear-gradient(160deg, var(--vcb-green) 0%, #003319 100%);
+            width: 38%; /* Tăng độ rộng sidebar một chút để chứa địa chỉ dài */
+            padding: 30px;
+            text-align: center;
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Logo Container */
+        .logo-container {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            width: 80%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .logo-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .avatar-wrapper {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid var(--vcb-light);
+            object-fit: cover;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .role {
+            font-size: 14px;
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 25px;
+            line-height: 1.4;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 20px;
+            width: 100%;
+        }
+
+        .contact-info {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start; /* Căn lề trên để địa chỉ dài không bị lệch */
+            margin-bottom: 18px;
+            font-size: 14px;
+        }
+
+        .contact-item i {
+            width: 30px;
+            min-width: 30px;
+            height: 30px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: var(--vcb-light);
+            margin-top: -2px; /* Căn chỉnh icon với dòng đầu tiên của text */
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .contact-item a:hover { color: var(--vcb-light); }
+
+        /* BUTTONS */
+        .action-buttons {
+            width: 100%;
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 12px 5px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .btn-call {
+            background-color: var(--white);
+            color: var(--vcb-green);
+        }
+
+        .btn-zalo {
+            background-color: var(--zalo-blue);
+            color: white;
+        }
+        
+        .btn i { margin-right: 6px; }
+
+        /* ----- CONTENT (PHẢI) ----- */
+        .content {
+            width: 62%;
+            padding: 40px;
+            background-color: var(--white);
+        }
+
+        .section { margin-bottom: 35px; }
+
+        .section-title {
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--vcb-green);
+            border-bottom: 2px solid var(--bg-gray);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .section-title i { margin-right: 10px; color: var(--vcb-light); }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--vcb-light);
+            margin-bottom: 25px;
+        }
+        .timeline-item:last-child { margin-bottom: 0; }
+
+        .timeline-title {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+        .timeline-subtitle {
+            font-size: 14px;
+            color: var(--vcb-green);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .timeline-desc {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e8f5e9;
+            color: var(--vcb-green);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+            margin-right: 5px;
+            border: 1px solid #c8e6c9;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .profile-card { flex-direction: column; }
+            .sidebar { width: 100%; padding: 30px 20px; }
+            .content { width: 100%; padding: 30px 20px; }
+            .name { font-size: 22px; }
+            .logo-container { width: 50%; max-width: 200px; }
+            .action-buttons { flex-direction: row; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-card">
+        <!-- Cột Trái -->
+        <div class="sidebar">
+            <!-- Logo Ngân Hàng -->
+            <div class="logo-container">
+                <img src="https://upanh.vector6.com/images/2020/04/24/027-Logo-PNG-FILE-NganHang-Vietcombank.jpg" alt="Logo Vietcombank" class="logo-img">
+            </div>
+
+            <div class="avatar-wrapper">
+                <!-- Thay link ảnh của bạn vào đây -->
+                <img src="https://via.placeholder.com/200" alt="Hồ Ngọc Chung" class="avatar">
+            </div>
+            
+            <h1 class="name">Hồ Ngọc Chung</h1>
+            <p class="role">Phó Trưởng phòng Khách hàng Doanh nghiệp<br>Vietcombank - CN Lâm Đồng</p>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <div style="font-size:11px; opacity:0.7; margin-bottom:2px">Di động</div>
+                        <a href="tel:0848489339">0848.489.339</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <div style="font-size:11px; opacity:0.7; margin-bottom:2px">Email</div>
+                        <a href="mailto:chunghn.ldo@vietcombank.com.vn">chunghn.ldo@vietcombank.com.vn</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <div style="font-size:11px; opacity:0.7; margin-bottom:2px">Địa chỉ</div>
+                        <span style="line-height: 1.4; display:block;">Tầng 4, tòa nhà Vietcombank, 33 Nguyễn Văn Cừ, P. Xuân Hương, Đà Lạt, Lâm Đồng</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nút Gọi và Zalo -->
+            <div class="action-buttons">
+                <a href="tel:0848489339" class="btn btn-call">
+                    <i class="fas fa-phone-volume"></i> Gọi điện
+                </a>
+                <a href="https://zalo.me/0848489339" target="_blank" class="btn btn-zalo">
+                    <i class="fas fa-comment-dots"></i> Zalo
+                </a>
+            </div>
+        </div>
+
+        <!-- Cột Phải -->
+        <div class="content">
+            <!-- Giới thiệu chuyên môn -->
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-user-tie"></i> Giới thiệu chuyên môn</h2>
+                <div class="timeline-desc">
+                    Với hơn <strong>10 năm kinh nghiệm</strong> thực chiến trong ngành Ngân hàng, tôi sở hữu tư duy quản trị rủi ro nhạy bén và kiến thức tài chính vững chắc. Hiện tôi đang đảm nhiệm vai trò quản lý Khách hàng Doanh nghiệp tại Vietcombank Lâm Đồng, cam kết mang đến các giải pháp tài chính hiệu quả, đồng hành cùng sự thịnh vượng của đối tác.
+                </div>
+            </div>
+
+            <!-- Học vấn -->
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Trình độ học vấn</h2>
+                
+                <div class="timeline-item">
+                    <div class="timeline-title">Thạc sĩ Tài chính Ngân hàng</div>
+                    <div class="timeline-subtitle">Đại học Kinh tế TP. Hồ Chí Minh (UEH)</div>
+                    <div class="timeline-desc">Đào tạo chuyên sâu về Quản trị tài chính doanh nghiệp, Phân tích đầu tư và Các định chế tài chính.</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-title">Cử nhân Kinh tế</div>
+                    <div class="timeline-subtitle">Đại học Kinh tế TP. Hồ Chí Minh (UEH)</div>
+                    <div class="timeline-desc">Tốt nghiệp chuyên ngành Tài chính - Ngân hàng với nền tảng kiến thức kinh tế vĩ mô vững chắc.</div>
+                </div>
+            </div>
+
+            <!-- Kinh nghiệm làm việc -->
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-briefcase"></i> Kinh nghiệm làm việc</h2>
+                
+                <div class="timeline-item">
+                    <div class="timeline-title">Phó Trưởng phòng Khách hàng Doanh nghiệp</div>
+                    <div class="timeline-subtitle">Vietcombank - Chi nhánh Lâm Đồng</div>
+                    <div class="timeline-desc">
+                        Chịu trách nhiệm quản lý và phát triển danh mục khách hàng doanh nghiệp. Thẩm định tín dụng, tư vấn bảo lãnh, thanh toán quốc tế và các dịch vụ tài chính chuyên sâu.
+                    </div>
+                    <div>
+                        <span class="badge">Quản lý & Lãnh đạo</span>
+                        <span class="badge">Thẩm định tín dụng</span>
+                        <span class="badge">Phát triển kinh doanh</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
